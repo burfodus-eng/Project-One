@@ -1,0 +1,14 @@
+[Unit]
+Description=Reef Controller UI
+After=graphical.target network-online.target
+Wants=network-online.target
+
+[Service]
+User=pi
+WorkingDirectory=/home/pi/reef-controller
+ExecStart=/usr/bin/python3 -m app.main
+Restart=on-failure
+Environment=QT_QPA_PLATFORM=eglfs
+
+[Install]
+WantedBy=graphical.target
